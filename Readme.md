@@ -17,11 +17,26 @@ cd ..
 
 
 ## Inference on SportsMOT dataset
-Run on train set
+### 1. Model preparation
+Download the [Pose Detector]([url](https://drive.google.com/drive/folders/1W4SbuDpotv8r-ZMwIyaaF4scqwXCTedV?usp=sharing)) model and put it in the SportSORT/jersey_team/rtmpose/ckpt folder.
+
+Download the weight of [PARSeq]([url](https://drive.google.com/drive/folders/1L5dYSFj_ARXHK0rx_qnDJmSs_RLjVzMG?usp=sharing)) model and put it in the SportSORT/jersey_team/models folder.
+
+Download the [Detector and ReID](https://drive.google.com/drive/folders/19Ikrz0yu3CUeO4soyeRfKPmk27oo6252?usp=sharing) model and put them in the SportSORT/checkpoint folder.
+
+
+### 2. Running Inference
+- Online
 ```
 cd SportSORT/SportSORT
-python tools/infer_test2.py --split train --online
+python tools/infer.py --split train --online
+```
+- Offline (Using cache)
+  Download the [cache](https://drive.google.com/drive/folders/1guJ5jBCFYsZyM5CJELX7cUOA80CMwMpj?usp=sharing) folder (include detection, embedding, team and jersey) and put in the SportSORT/cache folder and run the bellow script to run SportSORT using cache data.
+```
+cd SportSORT/SportSORT
+python tools/infer.py --split train
 ```
 
 ## Implementation Detail
-Our main method is implemented in file "/SportSORT/SportSORT/tracker/SportSORT.py"
+Our main method is implemented in file "/SportSORT/tracker/SportSORT.py"
